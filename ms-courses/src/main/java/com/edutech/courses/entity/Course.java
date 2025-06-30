@@ -44,4 +44,12 @@ public class Course {
     @Column(name = "status", nullable = false, length = 50)
     private String status;
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
 }

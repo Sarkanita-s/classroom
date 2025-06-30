@@ -8,6 +8,8 @@ import com.edutech.courses.repository.CourseCategoryRepository;
 import com.edutech.courses.repository.CourseRepository;
 
 import lombok.RequiredArgsConstructor;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,10 +21,17 @@ import static com.edutech.common.exception.ExceptionUtils.orThrowFeign;
 @RequiredArgsConstructor
 public class CourseService {
 
-    private final CourseRepository courseRepo;
-    private final CourseCategoryRepository categRepo;
-    private final CourseMapper courseMapper;
-    private final UserClient userClient;
+    @Autowired
+    private CourseRepository courseRepo;
+    
+    @Autowired
+    private CourseCategoryRepository categRepo;
+    
+    @Autowired
+    private CourseMapper courseMapper;
+    
+    @Autowired
+    private UserClient userClient;
 
     public List<CourseDTO> findAll() {
         return courseRepo.findAll().stream().map(courseMapper::toDTO).toList();

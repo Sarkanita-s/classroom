@@ -41,4 +41,28 @@ public class CourseDTO {
     @NotBlank(message = "El estado del curso es obligatorio.")
     @Size(max = 50, message = "El estado no puede exceder los 50 caracteres.")
     private String status;
+
+    public Integer getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(Integer categoryId) {
+        this.categoryId = categoryId;
+    }
+
+    public Integer getManagerId() {
+        return managerId;
+    }
+
+    public void setManagerId(Integer managerId) {
+        this.managerId = managerId;
+    }
+
+    public Integer getInstructorId() {
+        return instructorId;
+    }
+
+    public void setInstructorId(Integer instructorId) {
+        this.instructorId = instructorId;
+    }
 }
