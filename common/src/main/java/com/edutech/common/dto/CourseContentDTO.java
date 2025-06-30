@@ -30,4 +30,12 @@ public class CourseContentDTO {
     @NotNull(message = "Debe especificar el orden del contenido.")
     @Min(value = 1, message = "El orden debe ser un número positivo mayor a 0.")
     private Integer orderIndex;
+
+    public Integer getCourseId() {
+        return courseId;
+    }
+
+    public void setCourseId(Integer courseId) {
+        this.courseId = courseId;
+    }
 }
