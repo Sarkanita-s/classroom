@@ -8,6 +8,7 @@ import static com.edutech.common.exception.ExceptionUtils.orThrow;
 
 import lombok.RequiredArgsConstructor;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -18,8 +19,11 @@ import java.util.List;
 @RequiredArgsConstructor
 public class UserService {
 
-    private final UserRepository userRepo;
-    private final UserMapper userMapper;
+    @Autowired
+    private UserRepository userRepo;
+
+    @Autowired
+    private UserMapper userMapper;
 
 
     public List<UserDTO> findAll() {

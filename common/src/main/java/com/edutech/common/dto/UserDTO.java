@@ -37,4 +37,20 @@ public class UserDTO {
     @NotNull(message = "La fecha de última actualización es obligatoria.")
     private Instant updatedAt;
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
 }
