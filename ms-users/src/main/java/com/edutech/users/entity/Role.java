@@ -25,4 +25,12 @@ public class Role {
     @Column(name = "description", nullable = false, length = 800)
     private String description;
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
 }
