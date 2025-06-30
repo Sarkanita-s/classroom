@@ -46,4 +46,13 @@ public class CourseQuizQuestionDTO {
     @NotNull(message = "La fecha de creación es obligatoria.")
     private Instant createdAt;
 
+    public Integer getQuizId() {
+        return quizId;
+    }
+
+    public void setQuizId(Integer quizId) {
+        this.quizId = quizId;
+    }
+
+
 }
