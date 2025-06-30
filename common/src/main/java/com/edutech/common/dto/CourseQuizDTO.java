@@ -30,4 +30,20 @@ public class CourseQuizDTO {
 
     @NotNull(message = "La fecha de creación es obligatoria.")
     private Instant createdAt;
+
+    public Integer getCourseId() {
+        return this.courseId;
+    }
+
+    public void setCourseId(Integer courseId) {
+        this.courseId = courseId;
+    }
+
+    public Integer GetId() {
+        return this.id;
+    }
+
+    public void serId(Integer Id) {
+        this.id = Id;
+    }
 }
