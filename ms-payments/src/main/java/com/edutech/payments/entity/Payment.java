@@ -21,15 +21,16 @@ public class Payment {
     private Integer id;
 
     @NotNull
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "user_id", nullable = false)
-    private Integer user;
+    @Column(name = "user_id", nullable = false)
+    private Integer userId;
+
+    @Column(name = "course_id")
+    private Integer courseId;
 
     @NotNull
     @Column(name = "amount", nullable = false, precision = 15, scale = 3)
     private BigDecimal amount;
 
-    @NotNull
     @ColumnDefault("CURRENT_TIMESTAMP")
     @Column(name = "payment_date", nullable = false)
     private Instant paymentDate;
@@ -40,13 +41,11 @@ public class Payment {
     private String paymentMethod;
 
     @Size(max = 200)
-    @NotNull
-    @Column(name = "payment_institution", nullable = false, length = 200)
+    @Column(name = "payment_institution", length = 200)
     private String paymentInstitution;
 
     @Size(max = 200)
-    @NotNull
-    @Column(name = "transaction_id", nullable = false, length = 200)
+    @Column(name = "transaction_id", length = 200)
     private String transactionId;
 
     @Size(max = 20)
@@ -54,4 +53,6 @@ public class Payment {
     @Column(name = "status", nullable = false, length = 20)
     private String status;
 
+    @Column(name = "discount_coupon_id")
+    private Integer discountCouponId;
 }
