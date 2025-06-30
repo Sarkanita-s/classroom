@@ -55,4 +55,84 @@ public class Payment {
 
     @Column(name = "discount_coupon_id")
     private Integer discountCouponId;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
+    public Integer getCourseId() {
+        return courseId;
+    }
+
+    public void setCourseId(Integer courseId) {
+        this.courseId = courseId;
+    }
+
+    public BigDecimal getAmount() {
+        return amount;
+    }
+
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
+    }
+
+    public Instant getPaymentDate() {
+        return paymentDate;
+    }
+
+    public void setPaymentDate(Instant paymentDate) {
+        this.paymentDate = paymentDate;
+    }
+
+    public String getPaymentMethod() {
+        return paymentMethod;
+    }
+
+    public void setPaymentMethod(String paymentMethod) {
+        this.paymentMethod = paymentMethod;
+    }
+
+    public String getPaymentInstitution() {
+        return paymentInstitution;
+    }
+
+    public void setPaymentInstitution(String paymentInstitution) {
+        this.paymentInstitution = paymentInstitution;
+    }
+
+    public String getTransactionId() {
+        return transactionId;
+    }
+
+    public void setTransactionId(String transactionId) {
+        this.transactionId = transactionId;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Integer getDiscountCouponId() {
+        return discountCouponId;
+    }
+
+    public void setDiscountCouponId(Integer discountCouponId) {
+        this.discountCouponId = discountCouponId;
+    }
 }
