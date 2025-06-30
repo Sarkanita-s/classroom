@@ -5,7 +5,6 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
-
 import org.hibernate.annotations.ColumnDefault;
 
 import java.time.Instant;
@@ -21,12 +20,10 @@ public class SupportTicket {
     private Integer id;
 
     @NotNull
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "user_id", nullable = false)
+    @Column(name = "user_id", nullable = false)
     private Integer user;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "support_user_id")
+    @Column(name = "support_user_id")
     private Integer supportUser;
 
     @Size(max = 200)
@@ -52,4 +49,67 @@ public class SupportTicket {
     @Column(name = "closed_at")
     private Instant closedAt;
 
+    public Integer getUser() {
+        return user;
+    }
+
+    public void setUser(Integer user) {
+        this.user = user;
+    }
+
+    public Integer getSupportUser() {
+        return supportUser;
+    }
+
+    public void setSupportUser(Integer supportUser) {
+        this.supportUser = supportUser;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getSubject() {
+        return subject;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Instant getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Instant createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Instant getClosedAt() {
+        return closedAt;
+    }
+
+    public void setClosedAt(Instant closedAt) {
+        this.closedAt = closedAt;
+    }
 }
