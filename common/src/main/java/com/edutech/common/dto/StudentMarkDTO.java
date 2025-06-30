@@ -32,4 +32,20 @@ public class StudentMarkDTO {
     @NotNull(message = "Debe registrar la fecha en que se asignó la nota.")
     private Instant gradedAt;
 
+    public Integer getQuizId() {
+        return quizId;
+    }
+
+    public void setQuizId(Integer quizId) {
+        this.quizId = quizId;
+    }
+
+    public Integer getStudentId() {
+        return studentId;
+    }
+
+    public void setStudentId(Integer studentId) {
+        this.studentId = studentId;
+    }
+
 }
