@@ -14,4 +14,13 @@ public class QuizDTO {
     private Integer timeLimitMinutes;
     private Integer maxScore;
     private Boolean isPublished;
+
+    public Integer getCourseId() {
+        return courseId;
+    }
+
+    public void setCourseId(Integer courseId) {
+        this.courseId = courseId;
+    }
+
 }
