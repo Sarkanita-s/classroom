@@ -1,6 +1,6 @@
 package com.edutech.grades.service;
 
-import com.edutech.grades.dto.StudentMarkDTO;
+import com.edutech.common.dto.StudentMarkDTO;
 import com.edutech.grades.client.UserClient;
 import com.edutech.grades.entity.StudentMark;
 import com.edutech.grades.mapper.StudentMarkMapper;

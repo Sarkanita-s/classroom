@@ -1,6 +1,6 @@
 package com.edutech.grades.mapper;
 
-import com.edutech.grades.dto.QuizResponseDTO;
+import com.edutech.common.dto.QuizResponseDTO;
 import com.edutech.grades.entity.QuizResponse;
 import org.mapstruct.Mapper;
 

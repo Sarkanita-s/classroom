@@ -1,6 +1,6 @@
 package com.edutech.grades.mapper;
 
-import com.edutech.grades.dto.StudentMarkDTO;
+import com.edutech.common.dto.StudentMarkDTO;
 import com.edutech.grades.entity.StudentMark;
 import org.mapstruct.Mapper;
 

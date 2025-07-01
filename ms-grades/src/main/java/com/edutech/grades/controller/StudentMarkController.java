@@ -1,6 +1,6 @@
 package com.edutech.grades.controller;
 
-import com.edutech.grades.dto.StudentMarkDTO;
+import com.edutech.common.dto.StudentMarkDTO;
 import com.edutech.grades.service.StudentMarkService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
