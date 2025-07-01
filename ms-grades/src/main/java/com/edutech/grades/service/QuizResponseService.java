@@ -1,6 +1,6 @@
 package com.edutech.grades.service;
 
-import com.edutech.common.dto.QuizResponseDTO;
+import com.edutech.grades.dto.QuizResponseDTO;
 import com.edutech.grades.client.UserClient;
 import com.edutech.grades.mapper.QuizResponseMapper;
 import com.edutech.grades.repository.QuizResponseRepository;

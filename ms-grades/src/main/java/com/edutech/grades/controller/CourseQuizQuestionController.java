@@ -1,6 +1,6 @@
 package com.edutech.grades.controller;
 
-import com.edutech.common.dto.CourseQuizQuestionDTO;
+import com.edutech.grades.dto.CourseQuizQuestionDTO;
 import com.edutech.grades.service.CourseQuizQuestionService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

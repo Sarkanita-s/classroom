@@ -1,6 +1,6 @@
 package com.edutech.grades.service;
 
-import com.edutech.common.dto.CourseQuizDTO;
+import com.edutech.grades.dto.CourseQuizDTO;
 import com.edutech.grades.client.CourseClient;
 import com.edutech.grades.entity.CourseQuiz;
 import com.edutech.grades.mapper.CourseQuizMapper;
