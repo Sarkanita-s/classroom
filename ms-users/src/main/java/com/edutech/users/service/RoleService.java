@@ -4,25 +4,17 @@ import com.edutech.common.dto.RoleDTO;
 import com.edutech.users.entity.Role;
 import com.edutech.users.mapper.RoleMapper;
 import com.edutech.users.repository.RoleRepository;
-
 import lombok.RequiredArgsConstructor;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
-
 import static com.edutech.common.exception.ExceptionUtils.orThrow;
 
 @Service
 @RequiredArgsConstructor
 public class RoleService {
 
-    @Autowired
-    private RoleRepository roleRepo;
-    
-    @Autowired
-    private RoleMapper roleMapper;
+    private final RoleRepository roleRepo;
+    private final RoleMapper roleMapper;
 
     public List<RoleDTO> findAll() {
         return roleRepo.findAll().stream().map(roleMapper::toDTO).toList();

@@ -29,7 +29,7 @@ public class CourseQuizService {
 
     public CourseQuizDTO create(CourseQuizDTO dto) {
         orThrowFeign(dto.getCourseId(), courseClient::findById, "Curso");
-        orThrow(quizRepo.findById(dto.GetId()), "Quiz");
+        orThrow(quizRepo.findById(dto.getId()), "Quiz");
         
         CourseQuiz entity = courseQuizMapper.toEntity(dto);
         return courseQuizMapper.toDTO(courseQuizRepo.save(entity));
