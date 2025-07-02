@@ -1,10 +1,9 @@
 package com.edutech.users.controller;
 
 import com.edutech.common.dto.UserDTO;
-import com.edutech.users.service.*;
+import com.edutech.users.service.UserService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,8 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class UserController {
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
 
     @GetMapping
     public ResponseEntity<List<UserDTO>> findAll() {
@@ -29,12 +27,12 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<UserDTO> create(@RequestBody UserDTO dto) {
+    public ResponseEntity<UserDTO> create(@RequestBody @Valid UserDTO dto) {
         return ResponseEntity.ok(userService.create(dto));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<UserDTO> update(@PathVariable Integer id, @RequestBody UserDTO dto) {
+    public ResponseEntity<UserDTO> update(@PathVariable Integer id, @RequestBody @Valid UserDTO dto) {
         return ResponseEntity.ok(userService.update(id, dto));
     }
 

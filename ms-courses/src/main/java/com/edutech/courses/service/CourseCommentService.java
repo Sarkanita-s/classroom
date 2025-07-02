@@ -6,26 +6,30 @@ import com.edutech.courses.entity.CourseComment;
 import com.edutech.courses.mapper.CourseCommentMapper;
 import com.edutech.courses.repository.CourseCommentRepository;
 import com.edutech.courses.repository.CourseRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 import static com.edutech.common.exception.ExceptionUtils.orThrow;
 import static com.edutech.common.exception.ExceptionUtils.orThrowFeign;
 
 @Service
+@RequiredArgsConstructor
 public class CourseCommentService {
 
-    @Autowired
-    private CourseCommentRepository commentRepo;
-    
-    @Autowired
-    private CourseRepository courseRepo;
-    
-    @Autowired
-    private CourseCommentMapper commentMapper;
-    
-    @Autowired
-    private UserClient userClient;
+    private final CourseCommentRepository commentRepo;
+    private final CourseRepository courseRepo;
+    private final CourseCommentMapper commentMapper;
+    private final UserClient userClient;
+
+    public List<CourseCommentDTO> findAll() {
+        return commentRepo.findAll().stream().map(commentMapper::toDTO).toList();
+    }
+
+    public CourseCommentDTO findById(Integer id) {
+        return commentMapper.toDTO(orThrow(commentRepo.findById(id), "Comentario"));
+    }
 
     public CourseCommentDTO create(CourseCommentDTO dto) {
         orThrow(courseRepo.findById(dto.getCourseId()), "Curso");
@@ -35,7 +39,18 @@ public class CourseCommentService {
         return commentMapper.toDTO(commentRepo.save(entity));
     }
 
+    public CourseCommentDTO update(Integer id, CourseCommentDTO dto) {
+        orThrow(commentRepo.findById(id), "Comentario");
+        return saveDTO(dto, id);
+    }
+
     public void delete(Integer id) {
         commentRepo.delete(orThrow(commentRepo.findById(id), "Comentario"));
+    }
+
+    private CourseCommentDTO saveDTO(CourseCommentDTO dto, Integer id) {
+        CourseComment entity = commentMapper.toEntity(dto);
+        if (id != null) entity.setId(id);
+        return commentMapper.toDTO(commentRepo.save(entity));
     }
 }

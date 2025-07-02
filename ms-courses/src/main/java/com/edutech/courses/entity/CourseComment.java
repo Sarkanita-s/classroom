@@ -17,10 +17,10 @@ public class CourseComment {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @JoinColumn(name = "course_id", nullable = false)
+    @Column(name = "course_id", nullable = false)
     private Integer courseId;
 
-    @JoinColumn(name = "user_id", nullable = false)
+    @Column(name = "user_id", nullable = false)
     private Integer userId;
 
     @Column(name = "comment_text", nullable = false, length = 800)

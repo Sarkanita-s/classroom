@@ -3,16 +3,16 @@ package com.edutech.courses.controller;
 import com.edutech.common.dto.CourseCommentDTO;
 import com.edutech.courses.service.CourseCommentService;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/course-comments")
+@RequiredArgsConstructor
 public class CourseCommentController {
 
-    @Autowired
-    private CourseCommentService commentService;
+    private final CourseCommentService commentService;
 
     @PostMapping
     public ResponseEntity<CourseCommentDTO> create(@RequestBody @Valid CourseCommentDTO dto) {

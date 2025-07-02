@@ -1,12 +1,11 @@
 package com.edutech.users.controller;
 
 import com.edutech.common.dto.RoleDTO;
-import com.edutech.users.service.*;
+import com.edutech.users.service.RoleService;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,8 +16,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class RoleController {
 
-    @Autowired
-    private RoleService roleService;
+    private final RoleService roleService;
 
     @GetMapping
     public ResponseEntity<List<RoleDTO>> findAll() {

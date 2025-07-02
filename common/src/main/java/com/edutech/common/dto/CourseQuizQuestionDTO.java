@@ -13,7 +13,8 @@ public class CourseQuizQuestionDTO {
     @NotNull(message = "El ID de la pregunta es obligatorio.")
     private Integer id;
 
-    private Integer quizId;
+    @NotNull(message = "Debe especificar el ID del quiz del curso.")
+    private Integer courseQuizId;
 
     @Size(max = 800, message = "El texto de la pregunta no puede exceder los 800 caracteres.")
     private String questionText;
@@ -40,19 +41,9 @@ public class CourseQuizQuestionDTO {
     private String correctOption;
 
     @NotNull(message = "Debe especificar el orden de la pregunta.")
-    @Min(value = 1, message = "El orden debe ser un número entero ositivo mayor o igual a 1.")
+    @Min(value = 1, message = "El orden debe ser un número entero positivo mayor o igual a 1.")
     private Integer orderIndex;
 
     @NotNull(message = "La fecha de creación es obligatoria.")
     private Instant createdAt;
-
-    public Integer getQuizId() {
-        return quizId;
-    }
-
-    public void setQuizId(Integer quizId) {
-        this.quizId = quizId;
-    }
-
-
 }

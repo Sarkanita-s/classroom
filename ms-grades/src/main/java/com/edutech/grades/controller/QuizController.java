@@ -3,7 +3,7 @@ package com.edutech.grades.controller;
 import com.edutech.common.dto.QuizDTO;
 import com.edutech.grades.service.QuizService;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,10 +11,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/quizzes")
+@RequiredArgsConstructor
 public class QuizController {
 
-    @Autowired
-    private QuizService quizService;
+    private final QuizService quizService;
 
     @GetMapping
     public ResponseEntity<List<QuizDTO>> findAll() {

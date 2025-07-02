@@ -39,7 +39,4 @@ public class Quiz {
     @Column(name = "is_published", nullable = false)
     private Boolean isPublished = false;
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
 }

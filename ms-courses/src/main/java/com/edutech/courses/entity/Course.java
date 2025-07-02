@@ -23,13 +23,13 @@ public class Course {
     @Column(name = "description", nullable = false, length = 800)
     private String description;
 
-    @JoinColumn(name = "category_id", nullable = false)
+    @Column(name = "category_id", nullable = false)
     private Integer categoryId;
 
-    @JoinColumn(name = "manager_id", nullable = false)
+    @Column(name = "manager_id", nullable = false)
     private Integer managerId;
 
-    @JoinColumn(name = "instructor_id", nullable = false)
+    @Column(name = "instructor_id", nullable = false)
     private Integer instructorId;
 
     @Column(name = "publish_date", nullable = false)
@@ -43,13 +43,5 @@ public class Course {
 
     @Column(name = "status", nullable = false, length = 50)
     private String status;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
 }

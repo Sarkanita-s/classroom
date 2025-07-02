@@ -108,6 +108,17 @@
             <optional>true</optional> <!-- Indica que es opcional: no se transita a otros módulos ni se empaqueta por defecto -->
         </dependency>
 
+        <!--
+        PARA ESTABLECER PRUEBAS GREG
+        Lo que esta acá es lo que modificaré del codigo para agregar
+        dependencias para el testing. 
+        -->
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>2.5.0</version>
+        </dependency>
+
     </dependencies>
 
     <!-- Empaquetado ejecutable con Spring Boot -->
@@ -124,28 +135,9 @@
 		            </execution>
 		        </executions>
 		        <configuration>
-		            <mainClass>com.edutech.users.ClassroomSupportModuleApplication</mainClass>
+		            <mainClass>com.edutech.support.ClassroomSupportModuleApplication</mainClass>
 		        </configuration>
 		        </plugin>
-		
-		        <!-- Plugin de compilación para procesadores de anotaciones (MapStruct + Lombok) -->
-		        <plugin>
-		        <groupId>org.apache.maven.plugins</groupId>
-		        <artifactId>maven-compiler-plugin</artifactId>
-		        <configuration>
-		            <parameters>true</parameters>
-		            <annotationProcessorPaths>
-		            <path>
-		                <groupId>org.mapstruct</groupId>
-		                <artifactId>mapstruct-processor</artifactId>
-		            </path>
-		            <path>
-		                <groupId>org.projectlombok</groupId>
-		                <artifactId>lombok</artifactId>
-		            </path>
-		            </annotationProcessorPaths>
-		        </configuration>
-	        </plugin>
 	    </plugins>
     </build>
 

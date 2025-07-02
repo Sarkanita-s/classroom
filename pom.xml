@@ -335,22 +335,14 @@
                     <!-- 
                         Procesadores de anotaciones que deben ejecutarse durante la compilación.
                         Son necesarios para herramientas como MapStruct y Lombok que generan clases automáticamente.
+                        
+                        IMPORTANTE: Lombok debe ejecutarse ANTES que MapStruct para que genere los getters/setters
+                        que MapStruct necesita para mapear las propiedades de las entidades.
                     -->
                     <annotationProcessorPaths>
                         
                         <!-- 
-                            Procesador de MapStruct: genera clases de implementación para interfaces con @Mapper.
-                            Ejemplo: 
-                                UsuarioMapper.java → UsuarioMapperImpl.java (autogenerado)
-                        -->
-                        <path>
-                            <groupId>org.mapstruct</groupId>
-                            <artifactId>mapstruct-processor</artifactId>
-                            <version>${mapstruct.version}</version>
-                        </path>
-
-                        <!-- 
-                            Procesador de anotaciones de Lombok:
+                            Procesador de anotaciones de Lombok: DEBE IR PRIMERO
                             Genera automáticamente métodos como:
                             - Getters/Setters (@Getter, @Setter)
                             - Constructores (@NoArgsConstructor, @AllArgsConstructor)
@@ -361,6 +353,18 @@
                             <groupId>org.projectlombok</groupId>
                             <artifactId>lombok</artifactId>
                             <version>${lombok.version}</version>
+                        </path>
+
+                        <!-- 
+                            Procesador de MapStruct: DEBE IR DESPUÉS de Lombok
+                            Genera clases de implementación para interfaces con @Mapper.
+                            Ejemplo: 
+                                UsuarioMapper.java → UsuarioMapperImpl.java (autogenerado)
+                        -->
+                        <path>
+                            <groupId>org.mapstruct</groupId>
+                            <artifactId>mapstruct-processor</artifactId>
+                            <version>${mapstruct.version}</version>
                         </path>
 
                     </annotationProcessorPaths>

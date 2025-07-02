@@ -6,7 +6,6 @@ import com.edutech.courses.service.CourseCategoryService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,8 +16,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CourseCategoryController {
 
-    @Autowired
-    private CourseCategoryService categService;
+    private final CourseCategoryService categService;
 
     @GetMapping
     public ResponseEntity<List<CourseCategoryDTO>> findAll() {

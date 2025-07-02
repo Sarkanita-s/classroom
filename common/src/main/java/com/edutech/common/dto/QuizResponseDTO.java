@@ -30,36 +30,4 @@ public class QuizResponseDTO {
     @NotNull(message = "La fecha de envío de la respuesta es obligatoria.")
     private Instant submittedAt;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getQuizId() {
-        return quizId;
-    }
-
-    public void setQuizId(Integer quizId) {
-        this.quizId = quizId;
-    }
-
-    public Instant getSubmittedAt() {
-        return submittedAt;
-    }
-
-    public void setSubmittedAt(Instant submittedAt) {
-        this.submittedAt = submittedAt;
-    }
-
-    public Integer getStudentId() {
-        return studentId;
-    }
-
-    public void setStudentId(Integer studentId) {
-        this.studentId = studentId;
-    }
-
 }

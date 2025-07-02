@@ -6,7 +6,6 @@ import com.edutech.payments.mapper.DiscountCouponMapper;
 import com.edutech.payments.repository.DiscountCouponRepository;
 import lombok.RequiredArgsConstructor;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,11 +16,8 @@ import static com.edutech.common.exception.ExceptionUtils.orThrow;
 @RequiredArgsConstructor
 public class DiscountCouponService {
     
-    @Autowired
-    private DiscountCouponRepository couponRepo;
-    
-    @Autowired
-    private DiscountCouponMapper couponMapper;
+    private final DiscountCouponRepository couponRepo;
+    private final DiscountCouponMapper couponMapper;
 
     public List<DiscountCouponDTO> findAll() {
         return couponRepo.findAll().stream()
@@ -49,20 +45,17 @@ public class DiscountCouponService {
     }
 
     public DiscountCouponDTO update(Integer id, DiscountCouponDTO dto) {
-    DiscountCoupon existing = orThrow(couponRepo.findById(id), "Cupón de descuento");
-    
-    // Actualización manual de campos
-    existing.setCode(dto.getCode());
-    existing.setDescription(dto.getDescription());
-    existing.setDiscountPercentage(dto.getDiscountPercentage());
-    existing.setValidFrom(dto.getValidFrom());
-    existing.setValidUntil(dto.getValidUntil());
-    existing.setIsActive(dto.getIsActive());
-    
-    return couponMapper.toDTO(couponRepo.save(existing));
-}
+        orThrow(couponRepo.findById(id), "Cupón de descuento");
+        return saveDTO(dto, id);
+    }
 
     public void delete(Integer id) {
         couponRepo.delete(orThrow(couponRepo.findById(id), "Cupón de descuento"));
+    }
+
+    private DiscountCouponDTO saveDTO(DiscountCouponDTO dto, Integer id) {
+        DiscountCoupon entity = couponMapper.toEntity(dto);
+        if (id != null) entity.setId(id);
+        return couponMapper.toDTO(couponRepo.save(entity));
     }
 }

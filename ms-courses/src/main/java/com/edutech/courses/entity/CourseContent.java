@@ -14,7 +14,7 @@ public class CourseContent {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @JoinColumn(name = "course_id", nullable = false)
+    @Column(name = "course_id", nullable = false)
     private Integer courseId;
 
     @Column(name = "title", nullable = false, length = 200)

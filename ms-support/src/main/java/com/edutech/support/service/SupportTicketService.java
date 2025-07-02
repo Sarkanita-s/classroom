@@ -5,7 +5,7 @@ import com.edutech.support.client.UserClient;
 import com.edutech.support.entity.SupportTicket;
 import com.edutech.support.mapper.SupportTicketMapper;
 import com.edutech.support.repository.SupportTicketRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
@@ -16,16 +16,12 @@ import static com.edutech.common.exception.ExceptionUtils.orThrow;
 import static com.edutech.common.exception.ExceptionUtils.orThrowFeign;
 
 @Service
+@RequiredArgsConstructor
 public class SupportTicketService {
 
-    @Autowired
-    private SupportTicketRepository ticketRepo;
-    
-    @Autowired
-    private SupportTicketMapper ticketMapper;
-    
-    @Autowired
-    private UserClient userClient;
+    private final SupportTicketRepository ticketRepo;
+    private final SupportTicketMapper ticketMapper;
+    private final UserClient userClient;
 
     public List<SupportTicketDTO> findAll() {
         return ticketRepo.findAll().stream()

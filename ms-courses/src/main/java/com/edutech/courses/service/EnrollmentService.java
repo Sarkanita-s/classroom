@@ -12,8 +12,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import static com.edutech.common.exception.ExceptionUtils.orThrow;
 import static com.edutech.common.exception.ExceptionUtils.orThrowFeign;
 
@@ -21,23 +19,17 @@ import static com.edutech.common.exception.ExceptionUtils.orThrowFeign;
 @RequiredArgsConstructor
 public class EnrollmentService {
     
-    @Autowired
-    private EnrollmentRepository enrollmentRepo;
-    
-    @Autowired
-    private EnrollmentMapper enrollmentMapper;
-    
-    @Autowired
-    private UserClient userClient;
-
+    private final EnrollmentRepository enrollmentRepo;
+    private final EnrollmentMapper enrollmentMapper;
+    private final UserClient userClient;
 
     public List<EnrollmentDTO> findAll() {
         return enrollmentRepo.findAll().stream().map(enrollmentMapper::toDTO).toList();
     }
+    
     public EnrollmentDTO findById(Integer id) {
         return enrollmentMapper.toDTO(orThrow(enrollmentRepo.findById(id), "Inscripcion"));
     }
-
 
     public EnrollmentDTO create(EnrollmentDTO dto) {
 

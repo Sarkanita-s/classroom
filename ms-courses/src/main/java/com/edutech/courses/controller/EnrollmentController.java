@@ -4,8 +4,6 @@ import com.edutech.common.dto.EnrollmentDTO;
 import com.edutech.courses.service.EnrollmentService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,11 +12,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/enrollments")
 @RequiredArgsConstructor
-
 public class EnrollmentController {
 
-    @Autowired
-    private EnrollmentService enrollmentService;
+    private final EnrollmentService enrollmentService;
 
     @GetMapping
     public ResponseEntity<List<EnrollmentDTO>> findAll() {
@@ -36,7 +32,7 @@ public class EnrollmentController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<EnrollmentDTO> update(@PathVariable Integer id, @Valid @RequestBody EnrollmentDTO dto) {
+    public ResponseEntity<EnrollmentDTO> update(@PathVariable Integer id, @RequestBody @Valid EnrollmentDTO dto) {
         return ResponseEntity.ok(enrollmentService.update(id, dto));
     }
 

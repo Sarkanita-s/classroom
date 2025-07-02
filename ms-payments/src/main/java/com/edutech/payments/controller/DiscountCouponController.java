@@ -4,8 +4,6 @@ import com.edutech.common.dto.DiscountCouponDTO;
 import com.edutech.payments.service.DiscountCouponService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,8 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class DiscountCouponController {
     
-    @Autowired
-    private DiscountCouponService couponService;
+    private final DiscountCouponService couponService;
 
     @GetMapping
     public ResponseEntity<List<DiscountCouponDTO>> findAll() {

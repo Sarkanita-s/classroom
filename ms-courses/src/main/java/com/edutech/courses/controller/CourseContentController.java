@@ -3,16 +3,16 @@ package com.edutech.courses.controller;
 import com.edutech.common.dto.CourseContentDTO;
 import com.edutech.courses.service.CourseContentService;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/course-contents")
+@RequiredArgsConstructor
 public class CourseContentController {
 
-    @Autowired
-    private CourseContentService contentService;
+    private final CourseContentService contentService;
 
     @PostMapping
     public ResponseEntity<CourseContentDTO> create(@RequestBody @Valid CourseContentDTO dto) {

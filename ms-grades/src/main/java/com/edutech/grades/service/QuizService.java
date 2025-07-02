@@ -1,35 +1,25 @@
 package com.edutech.grades.service;
 
 import com.edutech.common.dto.QuizDTO;
-import com.edutech.grades.client.CourseClient;
 import com.edutech.grades.entity.Quiz;
 import com.edutech.grades.mapper.QuizMapper;
 import com.edutech.grades.repository.QuizRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static com.edutech.common.exception.ExceptionUtils.orThrow;
-import static com.edutech.common.exception.ExceptionUtils.orThrowFeign;
 
 @Service
+@RequiredArgsConstructor
 public class QuizService {
 
-    @Autowired
-    private QuizRepository quizRepo;
-    
-    @Autowired
-    private QuizMapper quizMapper;
-    
-    @Autowired
-    private CourseClient courseClient;
+    private final QuizRepository quizRepo;
+    private final QuizMapper quizMapper;
 
     public List<QuizDTO> findAll() {
-        return quizRepo.findAll().stream()
-                .map(quizMapper::toDTO)
-                .collect(Collectors.toList());
+        return quizRepo.findAll().stream().map(quizMapper::toDTO).toList();
     }
 
     public QuizDTO findById(Integer id) {
@@ -37,8 +27,8 @@ public class QuizService {
     }
 
     public QuizDTO create(QuizDTO dto) {
-        orThrowFeign(dto.getCourseId(), courseClient::findById, "Curso");
-        return saveDTO(dto, null);
+        Quiz entity = quizMapper.toEntity(dto);
+        return quizMapper.toDTO(quizRepo.save(entity));
     }
 
     public QuizDTO update(Integer id, QuizDTO dto) {

@@ -6,26 +6,20 @@ import com.edutech.grades.entity.StudentMark;
 import com.edutech.grades.mapper.StudentMarkMapper;
 import com.edutech.grades.repository.StudentMarkRepository;
 import com.edutech.grades.repository.QuizRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import static com.edutech.common.exception.ExceptionUtils.orThrow;
 import static com.edutech.common.exception.ExceptionUtils.orThrowFeign;
 
 @Service
+@RequiredArgsConstructor
 public class StudentMarkService {
 
-    @Autowired
-    private StudentMarkRepository markRepo;
-    
-    @Autowired
-    private QuizRepository quizRepo;
-    
-    @Autowired
-    private StudentMarkMapper markMapper;
-    
-    @Autowired
-    private UserClient userClient;
+    private final StudentMarkRepository markRepo;
+    private final QuizRepository quizRepo;
+    private final StudentMarkMapper markMapper;
+    private final UserClient userClient;
 
     public StudentMarkDTO create(StudentMarkDTO dto) {
         orThrow(quizRepo.findById(dto.getQuizId()), "Quiz");

@@ -25,7 +25,8 @@ public class RoleService {
     }
 
     public RoleDTO create(RoleDTO dto) {
-        return saveDTO(dto, null);
+        Role entity = roleMapper.toEntity(dto);
+        return roleMapper.toDTO(roleRepo.save(entity));
     }
 
     public RoleDTO update(Integer id, RoleDTO dto) {

@@ -7,7 +7,6 @@ import com.edutech.courses.repository.CourseCategoryRepository;
 
 import lombok.RequiredArgsConstructor;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,11 +17,8 @@ import static com.edutech.common.exception.ExceptionUtils.orThrow;
 @RequiredArgsConstructor
 public class CourseCategoryService {
 
-    @Autowired
-    private CourseCategoryRepository categRepo;
-    
-    @Autowired
-    private CourseCategoryMapper categMapper;
+    private final CourseCategoryRepository categRepo;
+    private final CourseCategoryMapper categMapper;
 
     public List<CourseCategoryDTO> findAll() {
         return categRepo.findAll().stream().map(categMapper::toDTO).toList();

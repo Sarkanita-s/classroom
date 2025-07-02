@@ -3,7 +3,7 @@ package com.edutech.support.controller;
 import com.edutech.common.dto.SupportTicketDTO;
 import com.edutech.support.service.SupportTicketService;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,10 +11,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/support-tickets")
+@RequiredArgsConstructor
 public class SupportTicketController {
 
-    @Autowired
-    private SupportTicketService ticketService;
+    private final SupportTicketService ticketService;
 
     @GetMapping
     public ResponseEntity<List<SupportTicketDTO>> findAll() {

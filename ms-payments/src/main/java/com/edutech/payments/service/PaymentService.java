@@ -7,7 +7,6 @@ import com.edutech.payments.mapper.PaymentMapper;
 import com.edutech.payments.repository.PaymentRepository;
 import lombok.RequiredArgsConstructor;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,14 +18,9 @@ import static com.edutech.common.exception.ExceptionUtils.orThrowFeign;
 @RequiredArgsConstructor
 public class PaymentService {
     
-    @Autowired
-    private PaymentRepository paymentRepo;
-    
-    @Autowired
-    private PaymentMapper paymentMapper;
-    
-    @Autowired
-    private UserClient userClient;
+    private final PaymentRepository paymentRepo;
+    private final PaymentMapper paymentMapper;
+    private final UserClient userClient;
 
     public List<PaymentDTO> findAll() {
         return paymentRepo.findAll().stream()
@@ -50,20 +44,17 @@ public class PaymentService {
     }
 
     public PaymentDTO update(Integer id, PaymentDTO dto) {
-    Payment existing = orThrow(paymentRepo.findById(id), "Pago");
-    
-    // Actualización manual de campos
-    existing.setAmount(dto.getAmount());
-    existing.setPaymentDate(dto.getPaymentDate());
-    existing.setPaymentMethod(dto.getPaymentMethod());
-    existing.setPaymentInstitution(dto.getPaymentInstitution());
-    existing.setTransactionId(dto.getTransactionId());
-    existing.setStatus(dto.getStatus());
-    
-    return paymentMapper.toDTO(paymentRepo.save(existing));
-}
+        orThrow(paymentRepo.findById(id), "Pago");
+        return saveDTO(dto, id);
+    }
 
     public void delete(Integer id) {
         paymentRepo.delete(orThrow(paymentRepo.findById(id), "Pago"));
+    }
+
+    private PaymentDTO saveDTO(PaymentDTO dto, Integer id) {
+        Payment entity = paymentMapper.toEntity(dto);
+        if (id != null) entity.setId(id);
+        return paymentMapper.toDTO(paymentRepo.save(entity));
     }
 }
