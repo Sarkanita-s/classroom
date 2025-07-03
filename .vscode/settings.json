@@ -20,7 +20,7 @@
   // Activa el guardado automático de archivos tras un breve retraso
   // - Evita perder cambios si olvidas guardar manualmente.
   // - El retraso por defecto es suficiente para no interrumpir tu flujo de trabajo.
-  "files.autoSave": "afterDelay",
+  "files.autoSave": "off",
 
   // Desactiva la miniatura de código (minimap) en el lateral del editor
   // - Reduce la distracción visual y mejora el rendimiento en archivos grandes.
