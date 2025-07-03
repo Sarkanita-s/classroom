@@ -7,7 +7,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @EnableDiscoveryClient
 @EnableFeignClients(basePackages = "com.edutech.courses.client")
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"com.edutech.courses"})
 public class ClassroomCoursesModuleApplication {
 
 	public static void main(String[] args) {

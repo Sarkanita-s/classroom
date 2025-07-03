@@ -96,6 +96,16 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+
+        <!-- 
+            Spring Cloud OpenFeign: Cliente HTTP declarativo para comunicación entre microservicios.
+            Permite crear interfaces con anotaciones @FeignClient para hacer llamadas REST a otros servicios.
+            No se especifica versión ya que esta será gestionada desde el proyecto padre.
+        -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency> 
 
         <!-- 

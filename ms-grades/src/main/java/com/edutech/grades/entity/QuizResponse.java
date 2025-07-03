@@ -26,12 +26,10 @@ public class QuizResponse {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "quiz_id", nullable = false)
+    @Column(name = "quiz_id", nullable = false)
     private Integer quizId;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "student_id", nullable = false)
+    @Column(name = "student_id", nullable = false)
     private Integer studentId;
 
     @Column(name = "selected_option", length = 1)
